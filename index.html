@@ -1,127 +1,200 @@
-"use client";
-
-import { useState } from "react";
-
-export default function LandingPage() {
-  const [step, setStep] = useState(1);
-
-  const handleSubscribe = () => {
-    setStep(2);
-  };
-
-  const handleJoin = () => {
-    setStep(3);
-
-    // Meta Pixel Lead Tracking
-    if (typeof window !== "undefined") {
-      const win = window as Window & { fbq?: (...args: unknown[]) => void };
-      if (typeof win.fbq === "function") {
-        win.fbq("track", "Lead", {
-          content_name: "Telegram Join - CA Nitin Murarka",
-        });
-      }
-    }
-  };
-
-  return (
-    <div style={styles.pageWrapper}>
-      <div style={styles.card}>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝘾𝘼 𝙉𝙄𝙏𝙄𝙉 𝙈𝙐𝙍𝘼𝙍𝙆𝘼 𝙏𝙍𝘼𝘿𝙄𝙉𝙂🫆™</title>
+    <style>
+        body {
+            background-color: #0d1b2a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #1b263b;
+            border-radius: 15px;
+            padding: 30px 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #ffcc00;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        h1 {
+            color: #ffcc00;
+            font-size: 24px;
+            margin: 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .subtitle {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            color: #a0aec0;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
         
-        {/* Profile Image - Non-clickable container */}
-        <div style={styles.imgWrapper}>
-          <img
-            src="https://i.ibb.co/gZyN6swy/Y5-V0y-SRmd-512f9dcdxn-Pf-Bhc-H8-ENf-Yl4z-1jz2da-MZjap-L2-FJ-zbg-DAh85vkcgx-HYOx5-Oi-Gw-Fm-e-PBGl8bg72q.jpg"
-            alt="CA Nitin Murarka"
-            style={styles.profileImg}
-          />
-        </div>
+        /* Signal Button Style */
+        .btn {
+            display: block;
+            background-color: #22c55e;
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #16a34a;
+        }
+        
+        /* Signal Loading State */
+        .btn.loading {
+            background-color: #eab308 !important;
+            color: #000000;
+            animation: pulse 1s infinite alternate;
+        }
 
-        <h1 style={styles.heading}>CA NITIN MURARKA TRADING</h1>
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
 
-        {/* STEP 1 */}
-        {step === 1 && (
-          <div>
-            <ul style={styles.list}>
-              <li style={styles.listItem}>
-                <span style={styles.bullet}>🌐</span> Learning & Educational Sessions
-              </li>
-              <li style={styles.listItem}>
-                <span style={styles.bullet}>📊</span> Market Concepts & Awareness
-              </li>
-              <li style={styles.listItem}>
-                <span style={styles.bullet}>💎</span> Chart Reading Concepts
-              </li>
-              <li style={styles.listItem}>
-                <span style={styles.bullet}>💻</span> Educational Case Discussions
-              </li>
-            </ul>
+        .badge-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #e2e8f0;
+        }
+        .features-list {
+            text-align: left;
+            margin: 20px 0;
+            padding: 0 10px;
+            list-style: none;
+        }
+        .features-list li {
+            margin-bottom: 12px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .features-list li::before {
+            content: "✓";
+            color: #ffffff;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .notice {
+            color: #ffcc00;
+            font-size: 14px;
+            margin: 15px 0 5px 0;
+        }
+        .sub-text {
+            color: #a0aec0;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        .risk-disclaimer {
+            color: #718096;
+            font-size: 11px;
+            margin-top: 15px;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 13px;
+            color: #718096;
+        }
+        footer a {
+            color: #3b82f6;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
 
-            <p style={styles.subText}>Join our learning community and grow your knowledge</p>
+<div class="container">
+    <!-- Profile Image -->
+    <img src="https://i.ibb.co/hTgxmHv/Y5-V0y-SRmd-512f9dcdxn-Pf-Bhc-H8-ENf-Yl4z-1jz2da-MZjap-L2-FJ-zbg-DAh85vkcgx-HYOx5-Oi-Gw-Fm-e-PBGl8bg72q.jpg" alt="Pankaj Bhardwaj" class="profile-img">
 
-            <button onClick={handleSubscribe} style={styles.actionButton}>
-              SUBSCRIBE FIRST
-            </button>
-          </div>
-        )}
+    <h1>𝘾𝘼 𝙉𝙄𝙏𝙄𝙉 𝙈𝙐𝙍𝘼𝙍𝙆𝘼 𝙏𝙍𝘼𝘿𝙄𝙉𝙂🫆™</h1>
+    <div class="subtitle">NIFTY • BANKNIFTY • OPTIONS</div>
+    <div class="tagline">Daily Intraday Trading Signals & Analysis</div>
 
-        {/* STEP 2 */}
-        {step === 2 && (
-          <div style={{ margin: "20px 0" }}>
-            <p style={{ color: "#00d2ff", fontSize: "16px", fontWeight: "bold", marginBottom: "15px" }}>
-              ✅ Step 1 Completed!
-            </p>
-            <p style={{ color: "#cbd5e1", fontSize: "14px", marginBottom: "20px" }}>
-              Click below to join the free telegram channel:
-            </p>
+    <!-- Single Telegram Button with Signal Effect -->
+    <button class="btn" onclick="connectSignal(this, 'https://t.me/+5vzls7BdAHo2NTZl')">Join Now For Free Telegram</button>
 
-            <button onClick={handleJoin} style={styles.actionButton}>
-              JOIN FREE TELEGRAM CHANNEL
-            </button>
-          </div>
-        )}
+    <!-- Trusted Badge -->
+    <div class="badge-box">
+        <div>✓ Trusted by 5,000+ Traders</div>
+        <div style="margin-top: 5px;">✓ Daily Consistent Setups</div>
+    </div>
 
-        {/* STEP 3 */}
-        {step === 3 && (
-          <div style={{ margin: "20px 0" }}>
-            <p style={{ color: "#00d2ff", fontSize: "18px", fontWeight: "bold", marginBottom: "10px" }}>
-              ✅ Access Granted!
-            </p>
-            <p style={{ color: "#cbd5e1", fontSize: "14px", marginBottom: "15px" }}>
-              Here is your exclusive link:
-            </p>
+    <!-- Features List -->
+    <ul class="features-list">
+        <li>5-7 High Probability Trades</li>
+        <li>Exact Entry, SL & Target</li>
+        <li>Beginner Friendly Guidance</li>
+        <li>Live Market Updates</li>
+    </ul>
 
-            <a
-              href="https://t.me/+5vzls7BdAHo2NTZl"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={styles.finalLink}
-            >
-              https://t.me/+5vzls7BdAHo2NTZl
-            </a>
-          </div>
-        )}
+    <div class="notice">⏳ Free Access Closing Soon</div>
+    <div class="sub-text">📊 Limited Seats • Active Community</div>
+    <div class="risk-disclaimer">⚠️ Market investments are subject to risk</div>
 
-        <p style={styles.quote}>
-          &quot;नियत अच्छी और मेहनत सच्ची हो, तो कामयाबी जरूर मिलती है।&quot;
-        </p>
+    <!-- Footer Section with 'AI ADS AGENCY' -->
+    <footer>
+        Powered by <a href="https://t.me/+mqNI-rk7y284M2Fl">AI ADS AGENCY</a>
+    </footer>
+</div>
 
-        <a
-          href="https://t.me/YOUR_AI_AGENCY_LINK_HERE"
-          target="_blank"
-          rel="noreferrer"
-          style={styles.adBanner}
-        >
-          This Channel Advertise By <span style={styles.adSpan}>AI ADS AGENCY</span>
-        </a>
+<script>
+    // Signal Check Function
+    function connectSignal(button, url) {
+        button.innerText = "📡 CONNECTING SIGNAL...";
+        button.classList.add('loading');
+        button.disabled = true;
 
-        <div style={styles.footer}>
-          <p>
-            <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerLink}>Terms</a> | &nbsp;
-            <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerLink}>Privacy</a> | &nbsp;
-            <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerLink}>Disclaimer</a>
-          </p>
-          <p style={{ marginTop: "6px" }}>This site is not part of Facebook™ or endorsed by Facebook™.</p>
-        </div>
+        setTimeout(function() {
+            button.innerText = "✅ SIGNAL CONNECTED!";
+            window.location.href = url;
+            
+            setTimeout(function() {
+                button.innerText = "Join Now For Free Telegram";
+                button.classList.remove('loading');
+                button.disabled = false;
+            }, 2000);
+            
+        }, 1500); 
+    }
+</script>
 
-      </div>
-    </div
+</body>
+</html>
