@@ -6,19 +6,22 @@
   <title>CA NITIN MURARKA TRADING</title>
   
   <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1062479626369959');
-    fbq('track', 'PageView');
-  </script>
-  <!-- End Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1062479626369959');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1062479626369959&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
   <style>
     * {
@@ -126,6 +129,11 @@
       box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
       margin-bottom: 25px;
       cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-telegram:hover {
+      transform: scale(1.02);
     }
 
     .quote {
@@ -169,6 +177,7 @@
 
     .footer a {
       color: #64748b;
+      text-name: none;
       text-decoration: none;
     }
   </style>
@@ -191,12 +200,12 @@
 
     <p class="sub-text">Join our learning community and grow your knowledge</p>
 
-    <!-- Telegram Link -->
-    <a href="https://t.me/+5vzls7BdAHo2NTZl" class="btn-telegram">JOIN TELEGRAM</a>
+    <!-- Telegram Link with Pixel Tracking -->
+    <a href="https://t.me/+5vzls7BdAHo2NTZl" class="btn-telegram" onclick="fbq('track', 'Lead');">JOIN TELEGRAM</a>
 
     <p class="quote">नियत अच्छी और मेहनत सच्ची हो, तो कामयाबी जरूर मिलती है।</p>
 
-    <!-- AI Agency Link -->
+    <!-- AI Agency Link (Aap ise apne hisaab se badal ya hata sakte hain) -->
     <a href="https://t.me/YOUR_AI_AGENCY_LINK_HERE" target="_blank" class="ad-banner">
       This Channel Advertise By 
       <span>
@@ -219,7 +228,7 @@
       if(typeof fbq === 'function') { 
         fbq('track', 'PageView'); 
       } 
-    }, 3000);
+    }, 5000);
   </script>
 </body>
 </html>
