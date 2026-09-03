@@ -6,12 +6,10 @@ export default function Page() {
   const [step, setStep] = useState(1); // 1 = Card View + Subscribe, 2 = Join Telegram, 3 = Show Channel
 
   const handleSubscribeClick = () => {
-    // Step 1 se Step 2 par shift karein
     setStep(2);
   };
 
   const handleJoinClick = () => {
-    // Step 3 par shift karein
     setStep(3);
 
     // Meta Pixel Lead Track karein
@@ -21,108 +19,99 @@ export default function Page() {
         win.fbq("track", "Lead", {
           content_name: "Telegram Join Request - CA Nitin Murarka",
         });
-        console.log("Meta me 1 Request chala gaya");
+        console.log("Meta me Lead Request chala gaya");
       }
     }
   };
 
   return (
-    <>
-      {/* Page Title & Head info */}
-      <head>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CA NITIN MURARKA TRADING</title>
-      </head>
-
-      <div style={styles.body}>
-        <div style={styles.card}>
-          
-          {/* Profile Image */}
-          <div style={styles.profileImgContainer}>
-            <img 
-              src="https://i.ibb.co/gZyN6swy/Y5-V0y-SRmd-512f9dcdxn-Pf-Bhc-H8-ENf-Yl4z-1jz2da-MZjap-L2-FJ-zbg-DAh85vkcgx-HYOx5-Oi-Gw-Fm-e-PBGl8bg72q.jpg" 
-              alt="CA Nitin Murarka" 
-              style={styles.profileImg} 
-            />
-          </div>
-
-          <h1 style={styles.heading}>CA NITIN MURARKA TRADING</h1>
-
-          {/* STEP 1: Initial Card View + Subscribe Button */}
-          {step === 1 && (
-            <>
-              <ul style={styles.list}>
-                <li style={styles.listItem}><span style={styles.icon}>🌐</span> Learning & Educational Sessions</li>
-                <li style={styles.listItem}><span style={styles.icon}>📊</span> Market Concepts & Awareness</li>
-                <li style={styles.listItem}><span style={styles.icon}>💎</span> Chart Reading Concepts</li>
-                <li style={styles.listItem}><span style={styles.icon}>💻</span> Educational Case Discussions</li>
-              </ul>
-
-              <p style={styles.subText}>Join our learning community and grow your knowledge</p>
-
-              <button 
-                onClick={handleSubscribeClick} 
-                style={styles.btnTelegram}
-              >
-                SUBSCRIBE FIRST
-              </button>
-            </>
-          )}
-
-          {/* STEP 2: Free Telegram Join Button */}
-          {step === 2 && (
-            <div style={{ margin: "20px 0" }}>
-              <p style={{ color: "#00d2ff", marginBottom: "20px", fontSize: "16px", fontWeight: "bold" }}>
-                ✅ Step 1 Done! Ab Free Telegram Join karein:
-              </p>
-
-              <button 
-                onClick={handleJoinClick} 
-                style={styles.btnTelegram}
-              >
-                JOIN FREE TELEGRAM CHANNEL
-              </button>
-            </div>
-          )}
-
-          {/* STEP 3: Final Link Reveal */}
-          {step === 3 && (
-            <div style={{ margin: "20px 0" }}>
-              <h2 style={{ color: "#00d2ff", fontSize: "20px", marginBottom: "15px" }}>✅ Request Sent!</h2>
-              <p style={{ color: "#d1d5db", marginBottom: "15px" }}>Yeh raha aapka Channel Link:</p>
-              
-              <a 
-                href="https://t.me/+5vzls7BdAHo2NTZl" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                style={styles.finalLink}
-              >
-                https://t.me/+5vzls7BdAHo2NTZl
-              </a>
-              <p style={{ marginTop: "20px", color: "#a0aec0", fontSize: "13px" }}>Ye mera Landing Page / Telegram Channel Hai</p>
-            </div>
-          )}
-
-          <p style={styles.quote}>नियत अच्छी और मेहनत सच्ची हो, तो कामयाबी जरूर मिलती है।</p>
-
-          {/* AI Agency Link */}
-          <a href="https://t.me/YOUR_AI_AGENCY_LINK_HERE" target="_blank" rel="noreferrer" style={styles.adBanner}>
-            This Channel Advertise By <span style={styles.adSpan}>AI ADS AGENCY</span>
-          </a>
-
-          <div style={styles.footer}>
-            <p>
-              <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerA}>Terms</a> | &nbsp;
-              <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerA}>Privacy</a> | &nbsp;
-              <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerA}>Disclaimer</a>
-            </p>
-            <p style={{ marginTop: "5px" }}>This site is not part of Facebook™ or endorsed by Facebook™.</p>
-          </div>
-
+    <main style={styles.body}>
+      <div style={styles.card}>
+        
+        {/* Profile Image */}
+        <div style={styles.profileImgContainer}>
+          <img 
+            src="https://i.ibb.co/gZyN6swy/Y5-V0y-SRmd-512f9dcdxn-Pf-Bhc-H8-ENf-Yl4z-1jz2da-MZjap-L2-FJ-zbg-DAh85vkcgx-HYOx5-Oi-Gw-Fm-e-PBGl8bg72q.jpg" 
+            alt="CA Nitin Murarka" 
+            style={styles.profileImg} 
+          />
         </div>
+
+        <h1 style={styles.heading}>CA NITIN MURARKA TRADING</h1>
+
+        {/* STEP 1: Initial Card View + Subscribe Button */}
+        {step === 1 && (
+          <>
+            <ul style={styles.list}>
+              <li style={styles.listItem}><span style={styles.icon}>🌐</span> Learning & Educational Sessions</li>
+              <li style={styles.listItem}><span style={styles.icon}>📊</span> Market Concepts & Awareness</li>
+              <li style={styles.listItem}><span style={styles.icon}>💎</span> Chart Reading Concepts</li>
+              <li style={styles.listItem}><span style={styles.icon}>💻</span> Educational Case Discussions</li>
+            </ul>
+
+            <p style={styles.subText}>Join our learning community and grow your knowledge</p>
+
+            <button 
+              onClick={handleSubscribeClick} 
+              style={styles.btnTelegram}
+            >
+              SUBSCRIBE FIRST
+            </button>
+          </>
+        )}
+
+        {/* STEP 2: Free Telegram Join Button */}
+        {step === 2 && (
+          <div style={{ margin: "20px 0" }}>
+            <p style={{ color: "#00d2ff", marginBottom: "20px", fontSize: "16px", fontWeight: "bold" }}>
+              ✅ Step 1 Done! Ab Free Telegram Join karein:
+            </p>
+
+            <button 
+              onClick={handleJoinClick} 
+              style={styles.btnTelegram}
+            >
+              JOIN FREE TELEGRAM CHANNEL
+            </button>
+          </div>
+        )}
+
+        {/* STEP 3: Final Link Reveal */}
+        {step === 3 && (
+          <div style={{ margin: "20px 0" }}>
+            <h2 style={{ color: "#00d2ff", fontSize: "20px", marginBottom: "15px" }}>✅ Request Sent!</h2>
+            <p style={{ color: "#d1d5db", marginBottom: "15px" }}>Yeh raha aapka Channel Link:</p>
+            
+            <a 
+              href="https://t.me/+5vzls7BdAHo2NTZl" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={styles.finalLink}
+            >
+              https://t.me/+5vzls7BdAHo2NTZl
+            </a>
+            <p style={{ marginTop: "20px", color: "#a0aec0", fontSize: "13px" }}>Ye mera Landing Page / Telegram Channel Hai</p>
+          </div>
+        )}
+
+        <p style={styles.quote}>नियत अच्छी और मेहनत सच्ची हो, तो कामयाबी जरूर मिलती है।</p>
+
+        {/* AI Agency Link */}
+        <a href="https://t.me/YOUR_AI_AGENCY_LINK_HERE" target="_blank" rel="noreferrer" style={styles.adBanner}>
+          This Channel Advertise By <span style={styles.adSpan}>AI ADS AGENCY</span>
+        </a>
+
+        <div style={styles.footer}>
+          <p>
+            <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerA}>Terms</a> | &nbsp;
+            <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerA}>Privacy</a> | &nbsp;
+            <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerA}>Disclaimer</a>
+          </p>
+          <p style={{ marginTop: "5px" }}>This site is not part of Facebook™ or endorsed by Facebook™.</p>
+        </div>
+
       </div>
-    </>
+    </main>
   );
 }
 
