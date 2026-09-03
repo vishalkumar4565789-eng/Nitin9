@@ -2,152 +2,162 @@
 
 import { useState } from "react";
 
-export default function Page() {
-  const [step, setStep] = useState(1); // 1 = Card View + Subscribe, 2 = Join Telegram, 3 = Show Channel
+export default function LandingPage() {
+  const [step, setStep] = useState(1);
 
-  const handleSubscribeClick = () => {
+  const handleSubscribe = () => {
     setStep(2);
   };
 
-  const handleJoinClick = () => {
+  const handleJoin = () => {
     setStep(3);
 
-    // Meta Pixel Lead Track karein
+    // Meta Pixel Lead Tracking
     if (typeof window !== "undefined") {
       const win = window as Window & { fbq?: (...args: unknown[]) => void };
       if (typeof win.fbq === "function") {
         win.fbq("track", "Lead", {
-          content_name: "Telegram Join Request - CA Nitin Murarka",
+          content_name: "Telegram Join - CA Nitin Murarka",
         });
-        console.log("Meta me Lead Request chala gaya");
       }
     }
   };
 
   return (
-    <main style={styles.body}>
+    <div style={styles.pageWrapper}>
       <div style={styles.card}>
         
-        {/* Profile Image */}
-        <div style={styles.profileImgContainer}>
-          <img 
-            src="https://i.ibb.co/gZyN6swy/Y5-V0y-SRmd-512f9dcdxn-Pf-Bhc-H8-ENf-Yl4z-1jz2da-MZjap-L2-FJ-zbg-DAh85vkcgx-HYOx5-Oi-Gw-Fm-e-PBGl8bg72q.jpg" 
-            alt="CA Nitin Murarka" 
-            style={styles.profileImg} 
+        {/* Profile Image - Non-clickable container */}
+        <div style={styles.imgWrapper}>
+          <img
+            src="https://i.ibb.co/gZyN6swy/Y5-V0y-SRmd-512f9dcdxn-Pf-Bhc-H8-ENf-Yl4z-1jz2da-MZjap-L2-FJ-zbg-DAh85vkcgx-HYOx5-Oi-Gw-Fm-e-PBGl8bg72q.jpg"
+            alt="CA Nitin Murarka"
+            style={styles.profileImg}
           />
         </div>
 
         <h1 style={styles.heading}>CA NITIN MURARKA TRADING</h1>
 
-        {/* STEP 1: Initial Card View + Subscribe Button */}
+        {/* STEP 1 */}
         {step === 1 && (
-          <>
+          <div>
             <ul style={styles.list}>
-              <li style={styles.listItem}><span style={styles.icon}>🌐</span> Learning & Educational Sessions</li>
-              <li style={styles.listItem}><span style={styles.icon}>📊</span> Market Concepts & Awareness</li>
-              <li style={styles.listItem}><span style={styles.icon}>💎</span> Chart Reading Concepts</li>
-              <li style={styles.listItem}><span style={styles.icon}>💻</span> Educational Case Discussions</li>
+              <li style={styles.listItem}>
+                <span style={styles.bullet}>🌐</span> Learning & Educational Sessions
+              </li>
+              <li style={styles.listItem}>
+                <span style={styles.bullet}>📊</span> Market Concepts & Awareness
+              </li>
+              <li style={styles.listItem}>
+                <span style={styles.bullet}>💎</span> Chart Reading Concepts
+              </li>
+              <li style={styles.listItem}>
+                <span style={styles.bullet}>💻</span> Educational Case Discussions
+              </li>
             </ul>
 
             <p style={styles.subText}>Join our learning community and grow your knowledge</p>
 
-            <button 
-              onClick={handleSubscribeClick} 
-              style={styles.btnTelegram}
-            >
+            <button onClick={handleSubscribe} style={styles.actionButton}>
               SUBSCRIBE FIRST
             </button>
-          </>
+          </div>
         )}
 
-        {/* STEP 2: Free Telegram Join Button */}
+        {/* STEP 2 */}
         {step === 2 && (
           <div style={{ margin: "20px 0" }}>
-            <p style={{ color: "#00d2ff", marginBottom: "20px", fontSize: "16px", fontWeight: "bold" }}>
-              ✅ Step 1 Done! Ab Free Telegram Join karein:
+            <p style={{ color: "#00d2ff", fontSize: "16px", fontWeight: "bold", marginBottom: "15px" }}>
+              ✅ Step 1 Completed!
+            </p>
+            <p style={{ color: "#cbd5e1", fontSize: "14px", marginBottom: "20px" }}>
+              Click below to join the free telegram channel:
             </p>
 
-            <button 
-              onClick={handleJoinClick} 
-              style={styles.btnTelegram}
-            >
+            <button onClick={handleJoin} style={styles.actionButton}>
               JOIN FREE TELEGRAM CHANNEL
             </button>
           </div>
         )}
 
-        {/* STEP 3: Final Link Reveal */}
+        {/* STEP 3 */}
         {step === 3 && (
           <div style={{ margin: "20px 0" }}>
-            <h2 style={{ color: "#00d2ff", fontSize: "20px", marginBottom: "15px" }}>✅ Request Sent!</h2>
-            <p style={{ color: "#d1d5db", marginBottom: "15px" }}>Yeh raha aapka Channel Link:</p>
-            
-            <a 
-              href="https://t.me/+5vzls7BdAHo2NTZl" 
-              target="_blank" 
+            <p style={{ color: "#00d2ff", fontSize: "18px", fontWeight: "bold", marginBottom: "10px" }}>
+              ✅ Access Granted!
+            </p>
+            <p style={{ color: "#cbd5e1", fontSize: "14px", marginBottom: "15px" }}>
+              Here is your exclusive link:
+            </p>
+
+            <a
+              href="https://t.me/+5vzls7BdAHo2NTZl"
+              target="_blank"
               rel="noopener noreferrer"
               style={styles.finalLink}
             >
               https://t.me/+5vzls7BdAHo2NTZl
             </a>
-            <p style={{ marginTop: "20px", color: "#a0aec0", fontSize: "13px" }}>Ye mera Landing Page / Telegram Channel Hai</p>
           </div>
         )}
 
-        <p style={styles.quote}>नियत अच्छी और मेहनत सच्ची हो, तो कामयाबी जरूर मिलती है।</p>
+        <p style={styles.quote}>
+          &quot;नियत अच्छी और मेहनत सच्ची हो, तो कामयाबी जरूर मिलती है।&quot;
+        </p>
 
-        {/* AI Agency Link */}
-        <a href="https://t.me/YOUR_AI_AGENCY_LINK_HERE" target="_blank" rel="noreferrer" style={styles.adBanner}>
+        <a
+          href="https://t.me/YOUR_AI_AGENCY_LINK_HERE"
+          target="_blank"
+          rel="noreferrer"
+          style={styles.adBanner}
+        >
           This Channel Advertise By <span style={styles.adSpan}>AI ADS AGENCY</span>
         </a>
 
         <div style={styles.footer}>
           <p>
-            <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerA}>Terms</a> | &nbsp;
-            <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerA}>Privacy</a> | &nbsp;
-            <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerA}>Disclaimer</a>
+            <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerLink}>Terms</a> | &nbsp;
+            <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerLink}>Privacy</a> | &nbsp;
+            <a href="https://t.me/+jViKIQmWTLFmNjNl" style={styles.footerLink}>Disclaimer</a>
           </p>
-          <p style={{ marginTop: "5px" }}>This site is not part of Facebook™ or endorsed by Facebook™.</p>
+          <p style={{ marginTop: "6px" }}>This site is not part of Facebook™ or endorsed by Facebook™.</p>
         </div>
 
       </div>
-    </main>
+    </div>
   );
 }
 
-// Inline Styles for Next.js Component
 const styles = {
-  body: {
-    backgroundColor: "#000",
-    color: "#fff",
+  pageWrapper: {
+    backgroundColor: "#000000",
+    color: "#ffffff",
+    minHeight: "100vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "100vh",
-    padding: "20px",
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    padding: "16px",
+    fontFamily: "Inter, sans-serif",
   },
   card: {
-    backgroundColor: "#030a0f",
+    backgroundColor: "#0a0f18",
     border: "2px solid #00a8e8",
-    borderRadius: "40px",
+    borderRadius: "28px",
     padding: "30px 20px",
     maxWidth: "400px",
     width: "100%",
     textAlign: "center" as const,
-    boxShadow: "0 0 20px rgba(0, 168, 232, 0.2)",
+    boxShadow: "0 0 25px rgba(0, 168, 232, 0.2)",
   },
-  profileImgContainer: {
-    width: "140px",
-    height: "140px",
+  imgWrapper: {
+    width: "120px",
+    height: "120px",
     margin: "0 auto 20px",
     borderRadius: "50%",
-    padding: "4px",
-    background: "#030a0f",
-    boxShadow: "0 0 25px #00d2ff",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    padding: "3px",
+    background: "linear-gradient(135deg, #00d2ff, #a855f7)",
+    boxShadow: "0 0 20px rgba(0, 210, 255, 0.4)",
+    pointerEvents: "none" as const, // Yeh ensure karega ki image par click na ho
   },
   profileImg: {
     width: "100%",
@@ -156,94 +166,84 @@ const styles = {
     objectFit: "cover" as const,
   },
   heading: {
-    fontSize: "20px",
-    letterSpacing: "1px",
-    marginBottom: "25px",
+    fontSize: "19px",
     fontWeight: "800" as const,
     color: "#00d2ff",
+    marginBottom: "20px",
   },
   list: {
     listStyle: "none",
     textAlign: "left" as const,
-    marginBottom: "25px",
     padding: 0,
+    margin: "0 0 20px 0",
   },
   listItem: {
     display: "flex",
     alignItems: "center",
-    padding: "12px 10px",
-    fontSize: "15px",
-    color: "#d1d5db",
-    borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+    padding: "10px 8px",
+    fontSize: "14px",
+    color: "#e2e8f0",
+    borderBottom: "1px solid rgba(255, 255, 255, 0.06)",
   },
-  icon: {
-    fontSize: "20px",
-    marginRight: "15px",
-    width: "25px",
-    textAlign: "center" as const,
+  bullet: {
+    fontSize: "16px",
+    marginRight: "12px",
   },
   subText: {
-    color: "#a0aec0",
-    fontSize: "14px",
-    marginBottom: "25px",
-    lineHeight: "1.4",
-    padding: "0 10px",
+    color: "#94a3b8",
+    fontSize: "13px",
+    marginBottom: "20px",
   },
-  btnTelegram: {
+  actionButton: {
     display: "block",
     width: "100%",
-    padding: "16px",
+    padding: "15px",
     border: "none",
-    borderRadius: "30px",
-    background: "linear-gradient(90deg, #00d2ff 0%, #a855f7 100%)",
-    color: "#fff",
-    fontSize: "18px",
-    fontWeight: "bold" as const,
-    letterSpacing: "1px",
-    textDecoration: "none",
-    boxShadow: "0 0 15px rgba(0, 210, 255, 0.4)",
-    marginBottom: "25px",
+    borderRadius: "25px",
+    background: "linear-gradient(90deg, #00d2ff 0%, #7c3aed 100%)",
+    color: "#ffffff",
+    fontSize: "16px",
+    fontWeight: "700" as const,
     cursor: "pointer",
+    boxShadow: "0 4px 15px rgba(0, 210, 255, 0.4)",
   },
   finalLink: {
     display: "block",
-    padding: "15px",
+    padding: "14px",
     background: "#0088cc",
-    color: "#fff",
-    borderRadius: "30px",
+    color: "#ffffff",
+    borderRadius: "25px",
     textDecoration: "none",
-    fontWeight: "bold" as const,
-    fontSize: "16px",
-    marginBottom: "15px",
+    fontWeight: "700" as const,
+    fontSize: "15px",
     wordBreak: "break-all" as const,
   },
   quote: {
-    fontSize: "15px",
-    color: "#e2e8f0",
-    lineHeight: "1.5",
-    marginBottom: "25px",
+    fontSize: "14px",
+    color: "#f1f5f9",
+    fontStyle: "italic",
+    margin: "20px 0",
   },
   adBanner: {
     display: "block",
-    border: "1px solid #005f73",
-    borderRadius: "12px",
-    padding: "12px",
-    fontSize: "13px",
-    color: "#a0aec0",
+    border: "1px solid rgba(0, 168, 232, 0.3)",
+    borderRadius: "10px",
+    padding: "10px",
+    fontSize: "12px",
+    color: "#94a3b8",
     marginBottom: "20px",
     textDecoration: "none",
-    background: "rgba(0, 95, 115, 0.1)",
+    background: "rgba(0, 168, 232, 0.05)",
   },
   adSpan: {
     color: "#00d2ff",
-    fontWeight: "bold" as const,
+    fontWeight: "600" as const,
   },
   footer: {
-    fontSize: "11px",
+    fontSize: "10px",
     color: "#64748b",
-    lineHeight: "1.6",
   },
-  footerA: {
+  footerLink: {
     color: "#64748b",
     textDecoration: "none",
   },
